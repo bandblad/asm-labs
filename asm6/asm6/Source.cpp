@@ -10,21 +10,20 @@ int main() {
 		*/
 
 		const double
-			c_31 = 31.0,
-			c_4 = 4.0,
+			c_255 = 255.0,
 			c_1 = 1.0;
 
-		double a, b, c, X;
+		double a, b, X;
 		int err = -1;
 
 		// Promt user action
 		std::cout
-			<< "Type 'a', 'b', 'c'.\n"
-			<< "'a', 'b', 'c' is rational numbers."
+			<< "Type 'a' and 'b'.\n"
+			<< "'a' and 'b' is real numbers."
 			<< std::endl;
 
 		// Read data from stdin
-		std::cin >> a >> b >> c;
+		std::cin >> a >> b;
 		if (!std::cin.good())
 			throw std::invalid_argument("Error: Invalid arguments detected in stdin.");
 
@@ -67,14 +66,14 @@ int main() {
 		}
 
 		if (err == -1) {
-			std::cout << "ASM Result is: " << X << std::endl;
+			/*std::cout << "ASM Result is: " << X << std::endl;
 
 			double divider = c / c_31 + a * b;
 			if (!divider)
 				throw std::domain_error("Error: division by zero.");
 			double divident = a - b * c_4 - c_1;
 
-			std::cout << "C++ Result is: " << divident / divider << std::endl;
+			std::cout << "C++ Result is: " << divident / divider << std::endl;*/
 		}
 		else if (err == 0)
 			throw std::domain_error("Error: division by zero.");

@@ -15,7 +15,7 @@ int main() {
 		// Promt user action
 		std::cout
 			<< "Type 'a', 'b', 'c'.\n"
-			<< "'a', 'b', 'c' is rational numbers."
+			<< "'a', 'b', 'c' is real numbers."
 			<< std::endl;
 
 		// Read data from stdin
