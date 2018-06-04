@@ -29,11 +29,7 @@ int main() {
 			fld qword ptr[c]; // <Stack(0)> == c
 			fdiv qword ptr[c_31]; // <Stack(0)> == c / 31.0
 			
-			fld qword ptr[a];
-			/*
-				<Stack(0)> == a
-				<Stack(1)> == c / 31.0
-			*/
+			fld qword ptr[a]; // <Stack(0)> == a && <Stack(1)> == c / 31.0
 			fmul qword ptr[b]; // <Stack(0)> == a * b
 			fadd; // <Stack(0)> == c / 31.0 + a * b
 
@@ -42,11 +38,7 @@ int main() {
 			sahf; // Set flags of <ah> register
 			jz err_div_zero;
 
-			fld qword ptr[b];
-			/*
-				<Stack(0)> == b
-				<Stack(1)> == c / 31.0 + a * b
-			*/
+			fld qword ptr[b]; // <Stack(0)> == b && <Stack(1)> == c / 31.0 + a * b
 			fmul qword ptr[c_4]; // <Stack(0)> == b * 4.0
 			fadd qword ptr[c_1]; // <Stack(0)> == b * 4.0 + 1.0 
 			fsub qword ptr[a]; // <Stack(0)> == b * 4.0 + 1.0 - a
