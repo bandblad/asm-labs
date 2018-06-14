@@ -6,7 +6,6 @@ int main()
 		// [14]: SUM(1, inf) { ((-1) ^ k) * (cos(k * x) / (k ^ 2)) }
 
 		double eps, x, result;
-		int err = -1;
 
 		// Promt user action
 		std::cout
@@ -59,30 +58,24 @@ int main()
 			fxch st(2);
 			fst qword ptr[result];
 		}
+		std::cout << "ASM Result: " << result << std::endl;
 
-		if (err == -1) {
-			std::cout << "ASM Result: " << result << std::endl;
+		 /* CPP */
+		int k = 1;
+		double mul = 1.0, temp;
+		result = 0.0;
 
-			int k = 1;
-			double mul = 1.0, temp;
-			result = 0.0;
+		do {
+			temp = k & 1 ? -1.0 : 1.0;;
+			temp *= cos(double(k) * x);
+			temp /= double(k * k);
+			mul *= temp;
 
-			do {
-				temp = k & 1 ? -1.0 : 1.0;;
-				temp *= cos(double(k) * x);
-				temp /= double(k * k);
-				mul *= temp;
+			result += temp;
+			++k;
+		} while (abs(mul) > eps);
 
-				result += temp;
-				++k;
-			} while (abs(mul) > eps);
-
-			std::cout << "Regular code result: " << result << std::endl;
-		}
-		else if (err == 0)
-			throw std::domain_error("Error: division by zero.");
-		else if (err == 1)
-			throw std::runtime_error("Error: undefined behaviour.");
+		std::cout << "Regular code result: " << result << std::endl;
 	}
 	catch (std::exception e) {
 		std::cerr << e.what() << std::endl;
