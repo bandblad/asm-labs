@@ -6,6 +6,7 @@ int main()
 		// [14]: SUM(1, inf) { ((-1) ^ k) * (cos(k * x) / (k ^ 2)) }
 
 		double eps, x, result;
+		const double pi_2 = 1.57079632679489661923;
 
 		// Promt user action
 		std::cout
@@ -16,7 +17,7 @@ int main()
 
 		// Read data from stdin
 		std::cin >> x >> eps;
-		if (!std::cin.good())
+		if (!std::cin.good() || x < 0 || x > pi_2)
 			throw std::invalid_argument("Error: Invalid arguments detected in stdin.");
 
 		_asm {
